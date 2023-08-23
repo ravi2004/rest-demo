@@ -6,9 +6,6 @@ const app = express();
 app.use(express.json());
 
 
-
-
-
 const User = mongoose.model('User', {
     userName: String,
     userEmail: String,
@@ -62,15 +59,6 @@ app.get('/api/userList', (req, res) => {
 app.get('*', (req, res) => {
     console.log('received request');
     res.send({ 'msg': 'all good' });
-    /*
-    user.find({}, (err, found) => {
-        if (!err) {
-            res.send(found);
-        }
-        console.log(err);
-        res.send("Some error occured!")
-    }).catch(err => console.log("Error occured, " + err));
-    */
 });
 
 app.listen(PORT, () => {
