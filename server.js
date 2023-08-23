@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require('express');
 const mongoose = require("mongoose");
 
+const mdb = require('mongodb').MongoClient
 const app = express();
 app.use(express.json());
 
@@ -12,7 +13,8 @@ const User = mongoose.model('User', {
     userPassword: String
 });
 
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
+mongoose.connect("mongodb://tdwapprest-server:CfU9CsxPNwpM3RtGhaXgVXEpH8dsMVKTFo0iRWi7ZXkfeMBrj1pZ1AF215YHkRDUQB3UpZQ9rvdPACDbC7EyMw==@tdwapprest-server.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@tdwapprest-server@", 
+{     useUnifiedTopology: true, socketTimeoutMS: 1000, useNewUrlParser: true });
 
 const PORT = process.env.SERVER_PORT || 3000;
 
