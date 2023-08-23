@@ -4,7 +4,7 @@
   "description": "Rest + Monogo DB backend for Demp App",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "Ravi K Sharma",
   "license": "ISC",
