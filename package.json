@@ -4,6 +4,7 @@
   "description": "Rest + Monogo DB backend for Demp App",
   "main": "server.js",
   "scripts": {
+    "start":"node server.js",
     "test": "mocha server.js --reporter mocha-junit-reporter --timeout 60000 --exit"
   },
   "author": "Ravi K Sharma",
