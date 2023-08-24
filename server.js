@@ -14,7 +14,7 @@ const User = mongoose.model('User', {
 });
 
 console.log(process.env);
-mongoose.connect(process.env.DATABASE_URL, {useUnifiedTopology: true, socketTimeoutMS: 1000, useNewUrlParser: true });
+mongoose.connect(process.env.AZURE_COSMOS_CONNECTIONSTRING, {useUnifiedTopology: true, socketTimeoutMS: 1000, useNewUrlParser: true });
 const PORT = process.env.SERVER_PORT || 3000;
 
 app.get("/api/getRestStatus", (req, res) => {
