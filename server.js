@@ -13,8 +13,8 @@ const User = mongoose.model('User', {
     userPassword: String
 });
 
-console.log(process.env.DATABASE_URL1)
-mongoose.connect(process.env.DATABASE_URL1, {useUnifiedTopology: true, socketTimeoutMS: 1000, useNewUrlParser: true });
+
+mongoose.connect(process.env.DATABASE_URL, {useUnifiedTopology: true, socketTimeoutMS: 1000, useNewUrlParser: true });
 
 const PORT = process.env.SERVER_PORT || 3000;
 
