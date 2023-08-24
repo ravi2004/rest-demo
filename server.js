@@ -15,7 +15,7 @@ const User = mongoose.model('User', {
 
 //console.log(process.env);
 mongoose.connect(process.env.AZURE_COSMOS_CONNECTIONSTRING, {useUnifiedTopology: true, socketTimeoutMS: 1000, useNewUrlParser: true });
-const PORT = process.env.SERVER_PORT1 || 3000;
+const SERVER_PORT = process.env.PORT || 3000;
 
 app.get("/api/getRestStatus", (req, res) => {
     res.json({ 'status': 200, 'statusCode': 'OK', 'result': 'Rest Connection is Working Fine' });
@@ -67,6 +67,6 @@ app.get('*', (req, res) => {
     res.send({ 'msg': 'all good' });
 });
 
-app.listen(PORT, "0.0.0.0", () => {
-    console.log("Server Listening on PORT:", PORT);
+app.listen(SERVER_PORT, "0.0.0.0", () => {
+    console.log("Server Listening on PORT:", SERVER_PORT);
 });
