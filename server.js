@@ -13,9 +13,9 @@ const User = mongoose.model('User', {
     userPassword: String
 });
 
-console.log(process.env);
+//console.log(process.env);
 mongoose.connect(process.env.AZURE_COSMOS_CONNECTIONSTRING, {useUnifiedTopology: true, socketTimeoutMS: 1000, useNewUrlParser: true });
-const PORT = process.env.SERVER_PORT || 3000;
+const PORT = process.env.SERVER_PORT1 || 3000;
 
 app.get("/api/getRestStatus", (req, res) => {
     res.json({ 'status': 200, 'statusCode': 'OK', 'result': 'Rest Connection is Working Fine' });
