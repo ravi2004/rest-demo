@@ -13,8 +13,8 @@ const User = mongoose.model('User', {
     userPassword: String
 });
 
-mongoose.connect("mongodb://tdwapprest-server:CfU9CsxPNwpM3RtGhaXgVXEpH8dsMVKTFo0iRWi7ZXkfeMBrj1pZ1AF215YHkRDUQB3UpZQ9rvdPACDbC7EyMw==@tdwapprest-server.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@tdwapprest-server@", 
-{     useUnifiedTopology: true, socketTimeoutMS: 1000, useNewUrlParser: true });
+console.log(process.env.DATABASE_URL1)
+mongoose.connect(process.env.DATABASE_URL1, {useUnifiedTopology: true, socketTimeoutMS: 1000, useNewUrlParser: true });
 
 const PORT = process.env.SERVER_PORT || 3000;
 
@@ -56,6 +56,11 @@ app.get('/api/userList', (req, res) => {
             console.log("Error occured, " + err)
             res.json({ 'status': 200, 'statusCode': 'error', 'result': err });
         });
+});
+
+app.get('/home', (req, res) => {
+    console.log('received request');
+    res.send({ 'msg': 'Rest is working Fine' });
 });
 
 app.get('*', (req, res) => {
