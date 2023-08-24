@@ -67,6 +67,6 @@ app.get('*', (req, res) => {
     res.send({ 'msg': 'all good' });
 });
 
-app.listen("0.0.0.0", PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
     console.log("Server Listening on PORT:", PORT);
 });
