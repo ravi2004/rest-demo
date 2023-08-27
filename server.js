@@ -1,11 +1,11 @@
 require("dotenv").config();
 const express = require('express');
 const mongoose = require("mongoose");
-
+const path=require('path')
 const mdb = require('mongodb').MongoClient
 const app = express();
 app.use(express.json());
-
+var api_router = express.Router();
 
 const User = mongoose.model('User', {
     userName: String,
@@ -13,8 +13,10 @@ const User = mongoose.model('User', {
     userPassword: String
 });
 
+app.use(express.static(path.join(__dirname, '../demo-app/build')));
+
 //console.log(process.env);
-mongoose.connect(process.env.AZURE_COSMOS_CONNECTIONSTRING, {useUnifiedTopology: true, socketTimeoutMS: 1000, useNewUrlParser: true });
+mongoose.connect(process.env.DATABASE_URL /*AZURE_COSMOS_CONNECTIONSTRING*/, {useUnifiedTopology: true, socketTimeoutMS: 1000, useNewUrlParser: true });
 const SERVER_PORT = process.env.PORT || 3000;
 
 app.get("/api/getRestStatus", (req, res) => {
@@ -57,10 +59,12 @@ app.get('/api/userList', (req, res) => {
         });
 });
 
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
     console.log('received request');
-    res.send({ 'msg': 'Rest is working Fine' });
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    //res.sendFile(path.join(__dirname, '../demo-app/build', 'manifest.json'));
 });
+
 
 app.get('*', (req, res) => {
     console.log('received request');
